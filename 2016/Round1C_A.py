@@ -11,14 +11,18 @@ def solve(P):
 	for i in range(len(P)):
 		q.put((-P[i], chr(ord('A')+i)))
 	order = []
+	
 	while not q.empty():
+		#evacuate one person
 		head = q.get()
 		order.append(head[1])
 		if head[0] < -1:
 			q.put((head[0]+1, head[1]))
 		remain -= 1
+		
 		if -head[0]*2 > remain and remain > 0:
 			head = q.get()
+			#if the remain has an absolute majority, evacuate another one
 			if -head[0]*2 > remain:
 				order[-1] += head[1]
 				remain -= 1
