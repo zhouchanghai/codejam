@@ -8,6 +8,11 @@ import org.jgrapht.alg.flow.PushRelabelMFImpl;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.SimpleDirectedWeightedGraph;
 
+/* The algorithm is wrong. 
+ * For example, 3 ingredients each with 1 package [9,10] - [10,11] - [11,12]. There is a flow but the answer is 0.
+ * But the code passed small and large data set.
+ * There must be some reason!
+ */
 public class Round1A_B {
 	
 	static int[] splitToInts(String s) {
