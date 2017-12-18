@@ -1,11 +1,11 @@
 package util;
 
-public class Substring implements CharSequence {
+public class StringView implements CharSequence {
     private String s;
     private int beginIndex;
     private int length;
 
-    public Substring(String s, int beginIndex, int endIndex) {
+    public StringView(String s, int beginIndex, int endIndex) {
         this.s = s;
         this.beginIndex = beginIndex;
         this.length = endIndex - beginIndex;
@@ -38,7 +38,7 @@ public class Substring implements CharSequence {
         if (end > length) {
             throw new StringIndexOutOfBoundsException(end);
         }
-        return (start == 0 && end == length) ? this : new Substring(s, start + beginIndex, end + beginIndex);
+        return (start == 0 && end == length) ? this : new StringView(s, start + beginIndex, end + beginIndex);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Substring implements CharSequence {
     }
 
     public static void main(String[] args) {
-        Substring sub = new Substring("abcde", 1, 4);
+        StringView sub = new StringView("abcde", 1, 4);
         System.out.println(sub.toString()); // bcd
         System.out.println(sub.length()); // 3
         for(int i=0; i<sub.length(); ++i) {
